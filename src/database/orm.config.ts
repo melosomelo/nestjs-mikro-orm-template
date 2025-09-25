@@ -1,6 +1,7 @@
-import { env } from '@/env/env';
+import { env, NodeEnvironment } from '@/env/env';
 import { Migrator } from '@mikro-orm/migrations';
 import { defineConfig } from '@mikro-orm/postgresql';
+import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { SeedManager } from '@mikro-orm/seeder';
 import _ from 'lodash';
 import { DateTime } from 'luxon';
@@ -12,6 +13,8 @@ export default defineConfig({
   user: env.DB_USERNAME,
   password: env.DB_PASSWORD,
   dbName: env.DB_NAME,
+  metadataProvider: TsMorphMetadataProvider,
+  entitiesTs: ['./**/*.entity.ts'],
   discovery: {
     warnWhenNoEntities: false,
   },
@@ -25,5 +28,5 @@ export default defineConfig({
     fileName: (className: string) =>
       `${_.kebabCase(className.replace(/Seeder$/, ''))}.seeder`,
   },
-  debug: false,
+  debug: env.NODE_ENV !== NodeEnvironment.Production,
 });

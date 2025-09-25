@@ -982,6 +982,14 @@
     postgres-date "2.1.0"
     postgres-interval "4.0.2"
 
+"@mikro-orm/reflection@^6.5.5":
+  version "6.5.5"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/reflection/-/reflection-6.5.5.tgz#6c33f2051d22d2d1ef063a4ef3d21951280f6147"
+  integrity sha512-lIohGcWSEltQfvhXJzxUf3Yx8/7EAvba3kNfV7F8ya/nXt89s4dIxLkNb1iz/uYNk6CHfyR2kFXrTh2eb0eh3Q==
+  dependencies:
+    globby "11.1.0"
+    ts-morph "27.0.0"
+
 "@mikro-orm/seeder@^6.5.5":
   version "6.5.5"
   resolved "https://registry.yarnpkg.com/@mikro-orm/seeder/-/seeder-6.5.5.tgz#a75395bb3e9c70ba901792dd1ecfce23cce579fb"
@@ -1199,6 +1207,15 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@tokenizer/token/-/token-0.3.0.tgz#fe98a93fe789247e998c75e74e9c7c63217aa276"
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
+
+"@ts-morph/common@~0.28.0":
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.28.0.tgz#884caaa5c6d93ec5cfeee0920d73cd1ee63ba5df"
+  integrity sha512-4w6X/oFmvXcwux6y6ExfM/xSqMHw20cYwFJH+BlYrtGa6nwY9qGq8GXnUs1sVYeF2o/KT3S8hAH6sKBI3VOkBg==
+  dependencies:
+    minimatch "^10.0.1"
+    path-browserify "^1.0.1"
+    tinyglobby "^0.2.14"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.11"
@@ -2287,6 +2304,11 @@ co@^4.6.0:
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
   integrity sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==
 
+code-block-writer@^13.0.3:
+  version "13.0.3"
+  resolved "https://registry.yarnpkg.com/code-block-writer/-/code-block-writer-13.0.3.tgz#90f8a84763a5012da7af61319dd638655ae90b5b"
+  integrity sha512-Oofo0pq3IKnsFtuHqSF7TqBfr71aeyZDVJ0HpmqB7FBM2qEigL0iPONSCZSO9pE9dZTAxANe5XHG9Uy0YMv8cg==
+
 collect-v8-coverage@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/collect-v8-coverage/-/collect-v8-coverage-1.0.2.tgz#c0b29bcd33bcd0779a1344c2136051e6afd3d9e9"
@@ -2914,6 +2936,11 @@ fb-watchman@^2.0.2:
   integrity sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==
   dependencies:
     bser "2.1.1"
+
+fdir@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/fdir/-/fdir-6.5.0.tgz#ed2ab967a331ade62f18d077dae192684d50d350"
+  integrity sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==
 
 fflate@^0.8.2:
   version "0.8.2"
@@ -4174,7 +4201,7 @@ mimic-fn@^2.1.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
-minimatch@^10.0.3:
+minimatch@^10.0.1, minimatch@^10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-10.0.3.tgz#cf7a0314a16c4d9ab73a7730a0e8e3c3502d47aa"
   integrity sha512-IPZ167aShDZZUMdRk66cyQAW3qr0WzbHkPdMYa8bzZhlHhO3jALbKdxcaak7W9FfT2rZNpQuUu4Od7ILEpXSaw==
@@ -4417,6 +4444,11 @@ parseurl@^1.3.3:
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
+path-browserify@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-1.0.1.tgz#d98454a9c3753d5790860f16f68867b9e46be1fd"
+  integrity sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==
+
 path-exists@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-4.0.0.tgz#513bdbe2d3b95d7762e8c1137efa195c6c61b5b3"
@@ -4544,7 +4576,7 @@ picomatch@^2.0.4, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-picomatch@^4.0.2:
+picomatch@^4.0.2, picomatch@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.3.tgz#796c76136d1eead715db1e7bad785dedd695a042"
   integrity sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==
@@ -5222,6 +5254,14 @@ tildify@2.0.0:
   resolved "https://registry.yarnpkg.com/tildify/-/tildify-2.0.0.tgz#f205f3674d677ce698b7067a99e949ce03b4754a"
   integrity sha512-Cc+OraorugtXNfs50hU9KS369rFXCfgGLpfCfvlc+Ud5u6VWmUQsOAa9HbTvheQdYnrdJqqv1e5oIqXppMYnSw==
 
+tinyglobby@^0.2.14:
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/tinyglobby/-/tinyglobby-0.2.15.tgz#e228dd1e638cea993d2fdb4fcd2d4602a79951c2"
+  integrity sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==
+  dependencies:
+    fdir "^6.5.0"
+    picomatch "^4.0.3"
+
 tmpl@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
@@ -5283,6 +5323,14 @@ ts-loader@^9.5.2:
     micromatch "^4.0.0"
     semver "^7.3.4"
     source-map "^0.7.4"
+
+ts-morph@27.0.0:
+  version "27.0.0"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-27.0.0.tgz#42e132b27187269dc4e0a725c1063bf9f553490d"
+  integrity sha512-xcqelpTR5PCuZMs54qp9DE3t7tPgA2v/P1/qdW4ke5b3Y5liTGTYj6a/twT35EQW/H5okRqp1UOqwNlgg0K0eQ==
+  dependencies:
+    "@ts-morph/common" "~0.28.0"
+    code-block-writer "^13.0.3"
 
 ts-node@^10.9.2:
   version "10.9.2"
