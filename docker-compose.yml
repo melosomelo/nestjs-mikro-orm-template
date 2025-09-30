@@ -1,5 +1,7 @@
 services:
   db:
+    env_file:
+      - .env
     container_name: api_db
     environment:
       POSTGRES_USER: ${DB_USERNAME}

@@ -73,6 +73,96 @@ describe('BaseRepository', () => {
       expect(instance!.name).toBe(name);
     });
   });
+
+  describe('create()', () => {
+    it('should properly create entity ', async () => {
+      const name = `some random name${Date.now()}`;
+      const { pk } = await simplePkRepository.create({ name });
+
+      const em = entityManager.fork();
+      const instance = await em.findOneOrFail(SimplePkEntity, { pk });
+
+      expect(instance.name).toBe(name);
+    });
+  });
+
+  describe('update()', () => {
+    it('should properly update entity', async () => {
+      const name = `some random name${Date.now()}`;
+      const { pk } = await simplePkRepository.create({ name });
+
+      const newName = `${name}${Date.now()}`;
+      await simplePkRepository.update(pk, { name: newName });
+
+      const em = entityManager.fork();
+      const instance = await em.findOneOrFail(SimplePkEntity, { pk });
+
+      expect(instance.name).toBe(newName);
+    });
+  });
+
+  describe('delete()', () => {
+    it('should properly delete entity', async () => {
+      const name = `some random name${Date.now()}`;
+      const { pk } = await simplePkRepository.create({ name });
+
+      await simplePkRepository.delete(pk);
+
+      const em = entityManager.fork();
+      const instance = await em.findOne(SimplePkEntity, { pk });
+
+      expect(instance).toBe(null);
+    });
+  });
+
+  describe('withTrx()', () => {
+    it('should work properly with outside transaction', async () => {
+      const name1 = `some random name${Date.now()}`;
+      const { pk: pk1 } = await simplePkRepository.create({ name: name1 });
+      const name2 = `some random name2${Date.now()}`;
+      const { pk: pk2 } = await simplePkRepository.create({ name: name2 });
+
+      const failingTrx = entityManager.fork();
+      await failingTrx.begin();
+
+      const newName2 = `${name2}-${Date.now()}`;
+
+      try {
+        // First, a failing transaction. First operation fails.
+        await simplePkRepository
+          .withTrx(failingTrx)
+          .update(pk2, { name: newName2 });
+        await simplePkRepository.withTrx(failingTrx).update(pk1, { pk: pk2 });
+        // this expect should not be reached, as the previous update statement should throw.
+        expect(1).toBe(2);
+      } catch {
+        await failingTrx.rollback();
+      }
+      const em = entityManager.fork();
+      expect((await em.findOneOrFail(SimplePkEntity, { pk: pk2 })).name).toBe(
+        name2,
+      );
+
+      // Now, one that should pass
+      const successTrx = entityManager.fork();
+      await successTrx.begin();
+
+      await simplePkRepository.withTrx(successTrx).delete(pk1);
+      await simplePkRepository
+        .withTrx(successTrx)
+        .update(pk2, { name: newName2 });
+
+      await successTrx.commit();
+
+      expect(
+        await entityManager.fork().findOne(SimplePkEntity, { pk: pk1 }),
+      ).toBe(null);
+      expect(
+        (await entityManager.fork().findOneOrFail(SimplePkEntity, { pk: pk2 }))
+          .name,
+      ).toBe(newName2);
+    });
+  });
 });
 
 @Entity()
@@ -100,7 +190,7 @@ class SimplePkEntity {
   @PrimaryKey({ autoincrement: true })
   pk: number & Opt;
 
-  [PrimaryKeyProp]?: ['pk'];
+  [PrimaryKeyProp]?: 'pk';
 
   @Property()
   name: string;
