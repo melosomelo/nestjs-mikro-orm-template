@@ -11,9 +11,17 @@ I use this as a foundation for real-world APIs and other templates.
   - `reset:dev` → reset the environment
 
 - 🧪 **Dedicated database for unit testing**
+
 - ✅ **Declarative `.env` schema validation** with `class-validator` + `class-transformer`
+
 - 📜 **Migrations** support
+
 - 🌱 **Seeders** for test/sample data
+
+- 🏗️ **Data layer foundation** with a very thin and extensible **Base Repository**
+  - Provides simple CRUD helpers (`create`, `update`, `delete`, `findOneByPk`, etc.)
+  - Easily extended for entity-specific repositories
+  - Built with transaction-aware helpers (`withTrx`) for consistent DB operations
 
 ---
 
