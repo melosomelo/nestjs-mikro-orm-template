@@ -14,7 +14,7 @@ import {
 
 export abstract class BaseRepository<T extends object> {
   constructor(
-    private entityManager: EntityManager,
+    private rootEntityManager: EntityManager,
     private entityName: EntityName<T>,
   ) {}
 
@@ -61,18 +61,18 @@ export abstract class BaseRepository<T extends object> {
   }
 
   get em() {
-    return this.trxEm ?? this.entityManager.fork();
+    return this.trxEm ?? this.rootEntityManager.fork();
   }
 
   withTrx(em: EntityManager) {
     const ctor = this.constructor as {
       new (
-        entityManager: EntityManager,
+        rootEntityManager: EntityManager,
         entityName: EntityName<T>,
       ): BaseRepository<T>;
     };
 
-    const newRepo = new ctor(this.entityManager, this.entityName);
+    const newRepo = new ctor(this.rootEntityManager, this.entityName);
     newRepo.trxEm = em;
     return newRepo;
   }
